@@ -32,6 +32,7 @@ RUN ln -s /data /root/stable-diffusion/models/ldm/stable-diffusion-v1 \
  && ln -s /output /root/stable-diffusion/outputs/txt2img-samples
 
 WORKDIR /root/stable-diffusion
+RUN sed -i -e 's/\r$//' /root/stable-diffusion/docker-bootstrap.sh
 
 ENTRYPOINT ["/root/stable-diffusion/docker-bootstrap.sh"]
 CMD python optimizedSD/txt2img_gradio.py
